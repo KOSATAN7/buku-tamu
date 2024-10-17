@@ -6,16 +6,15 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Check user credentials (you should hash passwords in production)
     $result = mysqli_query($mysqli, "SELECT * FROM login WHERE username='$username' AND password='$password' LIMIT 1");
 
     if (mysqli_num_rows($result) == 1) {
         $user = mysqli_fetch_assoc($result);
-        $_SESSION['user_id'] = $user['id']; // Store user session
+        $_SESSION['user_id'] = $user['id']; 
         header("Location: index.php");
-        exit(); // Stop further execution
+        exit(); 
     } else {
-        echo "Login failed! Invalid username or password.";
+        echo "Gagal Login karena salah password";
     }
 }
 ?>
