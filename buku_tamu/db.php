@@ -6,7 +6,7 @@ date_default_timezone_set("Asia/Bangkok");
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "berita";
+$db = "db_berita";
 
 $mysqli = new mysqli($host, $user, $pass, $db);
 

@@ -3,17 +3,20 @@
 session_start();
 $default_lang = 'bahasa_indonesia';
 
-if (!$_SESSION['lang']) {
+// Cek apakah $_SESSION['lang'] sudah diset atau belum
+if (!isset($_SESSION['lang'])) {
     $_SESSION['lang'] = $default_lang;
 }
 
 if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
     header("Location: index.php");
+    exit(); // Tambahkan exit() agar header() berfungsi dengan benar
 }
 
 // Masukan file bahasa yang sedang aktif
 include $_SESSION['lang'] . '.php';
+
 ?>
 
 <html>
@@ -28,7 +31,7 @@ include $_SESSION['lang'] . '.php';
             <li><a href="#"><?php echo $lang_menu_home; ?></a></li>
             <li><a href="#"><?php echo $lang_menu_profile; ?></a></li>
             <li><a href="#"><?php echo $lang_menu_contact; ?></a></li>
-            <li><a href="tambah_berita.html"><?php echo $lang_menu_add; ?></a></li>
+            <li><a href="berita.html"><?php echo $lang_menu_add; ?></a></li>
         </ul>
     </nav>
     <p>
